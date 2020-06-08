@@ -16,13 +16,36 @@ public class AnimationRunner {
         this.sleeper = sleeper;
     }
 
+    public GUI getGui() {
+        return gui;
+    }
+
+    public void setGui(GUI gui) {
+        this.gui = gui;
+    }
+
+    public int getFramesPerSecond() {
+        return framesPerSecond;
+    }
+
+    public void setFramesPerSecond(int framesPerSecond) {
+        this.framesPerSecond = framesPerSecond;
+    }
+
+    public Sleeper getSleeper() {
+        return sleeper;
+    }
+
+    public void setSleeper(Sleeper sleeper) {
+        this.sleeper = sleeper;
+    }
+
+    // ...
     public void run(Animation animation) {
         if (animation == null) {
             return;
         }
-
-        int millisecondsPerFrame = 1000 / this.framesPerSecond;
-
+        int millisecondsPerFrame = 1000 / framesPerSecond;
         while (!animation.shouldStop()) {
             long startTime = System.currentTimeMillis(); // timing
             DrawSurface d = gui.getDrawSurface();

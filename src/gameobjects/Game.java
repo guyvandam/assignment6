@@ -2,8 +2,11 @@ package gameobjects;
 
 import biuoop.DrawSurface;
 import biuoop.GUI;
+import biuoop.KeyboardSensor;
 import biuoop.Sleeper;
 import gameobjects.animation.AnimationRunner;
+import gameobjects.animation.CountdownAnimation;
+import gameobjects.animation.PauseScreen;
 import gameobjects.hitlisteners.BallRemover;
 import gameobjects.hitlisteners.BlockRemover;
 import gameobjects.hitlisteners.ScoreTrackingListener;
@@ -40,6 +43,7 @@ public class Game implements Animation {
     private int guiWidth;
     private int guiHeight;
     private int widthORHeight = 20;
+    private KeyboardSensor keyboard;
 
 
     /**
@@ -56,6 +60,10 @@ public class Game implements Animation {
         this.remainingBlocks = new Counter();
         this.remainingBalls = new Counter();
         this.currentScore = new Counter();
+        this.gui = new GUI("title", getGuiWidth(), getGuiHeight());
+        this.runner = new AnimationRunner(this.gui, 60, new Sleeper());
+        this.keyboard = this.getGui().getKeyboardSensor();
+//        this.running = true;
     }
 
 
@@ -133,6 +141,7 @@ public class Game implements Animation {
         return this.running;
     }
 
+
     /**
      * adds the input Interfaces.Collidable to the Interfaces.Collidable list of the GameObjects.GameEnvironment object.
      *
@@ -173,7 +182,7 @@ public class Game implements Animation {
      * Initialize a new game: creates the Blocks, Balls (and GameObjects.Paddle) and adds them to the game.
      */
     public void initialize() {
-        this.setGui(new GUI("title", getGuiWidth(), getGuiHeight()));
+//        this.setGui(new GUI("title", getGuiWidth(), getGuiHeight()));
 
         BlockRemover blockRemover = new BlockRemover(this, this.getRemainingBlocks());
         ScoreTrackingListener scoreTrackingListener = new ScoreTrackingListener(this.getCurrentScore());
@@ -328,43 +337,69 @@ public class Game implements Animation {
     /**
      * Run the game -- start the animation loop.
      */
+//    public void run() {
+//        int framesPerSecond = 60;
+//        int millisecondsPerFrame = 1000 / framesPerSecond;
+//        Sleeper sleeper = new Sleeper();
+//
+//        while (true) {
+//            long startTime = System.currentTimeMillis(); // timing
+//            DrawSurface d = this.getGui().getDrawSurface();
+//
+//            // game-specific logic
+//            this.addBackgroundColor(d);
+//            this.sprites.drawAllOn(d);
+//            this.sprites.notifyAllTimePassed();
+//
+//
+//            //stopping conditions
+//            if (this.getRemainingBlocks().getValue() == 0) {
+//                this.getCurrentScore().increase(100);
+//                this.getGui().close();
+//                return;
+//            }
+//
+//            if (this.getRemainingBalls().getValue() == 0) {
+//                this.getGui().close();
+//                return;
+//            }
+//
+//            this.getGui().show(d);
+//
+//            // timing
+//            long usedTime = System.currentTimeMillis() - startTime;
+//            long milliSecondLeftToSleep = millisecondsPerFrame - usedTime;
+//            if (milliSecondLeftToSleep > 0) {
+//                sleeper.sleepFor(milliSecondLeftToSleep);
+//            }
+//
+//        }
+//    }
+//
+//    public void run(int i) {
+//        int framesPerSecond = 60;
+//        int millisecondsPerFrame = 1000 / framesPerSecond;
+//        Sleeper sleeper = new Sleeper();
+//
+//
+//        while (!this.shouldStop()) { // shouldStop() is in charge of stopping condition.
+//            long startTime = System.currentTimeMillis(); // timing
+//            DrawSurface d = gui.getDrawSurface();
+//
+//            this.doOneFrame(d); // doOneFrame(DrawSurface) is in charge of the logic.
+//
+//            gui.show(d);
+//            long usedTime = System.currentTimeMillis() - startTime;
+//            long milliSecondLeftToSleep = millisecondsPerFrame - usedTime;
+//            if (milliSecondLeftToSleep > 0) {
+//                sleeper.sleepFor(milliSecondLeftToSleep);
+//            }
+//        }
+//    }
     public void run() {
-        int framesPerSecond = 60;
-        int millisecondsPerFrame = 1000 / framesPerSecond;
-        Sleeper sleeper = new Sleeper();
-
-        while (true) {
-            long startTime = System.currentTimeMillis(); // timing
-            DrawSurface d = this.getGui().getDrawSurface();
-
-            // game-specific logic
-            this.addBackgroundColor(d);
-            this.sprites.drawAllOn(d);
-            this.sprites.notifyAllTimePassed();
-
-
-            //stopping conditions
-            if (this.getRemainingBlocks().getValue() == 0) {
-                this.getCurrentScore().increase(100);
-                this.getGui().close();
-                return;
-            }
-
-            if (this.getRemainingBalls().getValue() == 0) {
-                this.getGui().close();
-                return;
-            }
-
-            this.getGui().show(d);
-
-            // timing
-            long usedTime = System.currentTimeMillis() - startTime;
-            long milliSecondLeftToSleep = millisecondsPerFrame - usedTime;
-            if (milliSecondLeftToSleep > 0) {
-                sleeper.sleepFor(milliSecondLeftToSleep);
-            }
-
-        }
+        this.runner.run(new CountdownAnimation(1,20,this.getSprites())); // countdown before turn starts.
+        this.running = true;
+        this.runner.run(this);
     }
 
 
@@ -380,12 +415,15 @@ public class Game implements Animation {
         if (this.getRemainingBlocks().getValue() == 0) {
             this.getCurrentScore().increase(100);
             this.getGui().close();
-            this.running = false;
         }
 
         if (this.getRemainingBalls().getValue() == 0) {
             this.getGui().close();
-            this.running = false;
+            return;
+        }
+
+        if (this.keyboard.isPressed("p")) {
+            this.runner.run(new PauseScreen(this.keyboard));
         }
     }
 
@@ -395,11 +433,4 @@ public class Game implements Animation {
     }
 
 
-    public void playOneTurn() {
-
-        this.running = true;
-        // use our runner to run the current animation -- which is one turn of
-        // the game.
-        this.runner.run(this);
-    }
 }
