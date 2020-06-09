@@ -1,4 +1,5 @@
-import gameobjects.Game;
+import gameobjects.GameLevel;
+import gameobjects.gamelevels.DirectHitLevel;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -12,7 +13,7 @@ public class Ass6Game {
      * @param args the command line arguments, we have no use for them in this main method.
      */
     public static void main(String[] args) {
-        Game game = new Game(800, 600);
+        GameLevel game = new GameLevel(800, 600,new DirectHitLevel());
         game.initialize();
         game.run();
     }

@@ -1,7 +1,6 @@
 package gameobjects.animation;
 
 import biuoop.DrawSurface;
-import biuoop.Sleeper;
 import gameobjects.SpriteCollection;
 import interfaces.Animation;
 
@@ -23,27 +22,19 @@ public class CountdownAnimation implements Animation {
 
     @Override
     public void doOneFrame(DrawSurface d) {
-//        Sleeper sleeper = new Sleeper();
-//        long millisecondsPerFrame = (long) (numOfSeconds / 1000);
-//        long millisecondsPerFrame = (long) (1000 / numOfSeconds);
         if (d == null) {
             return;
         }
-        d.drawText(10, d.getHeight() / 2, String.valueOf(countFrom), 32);
+        for (int i = 0; i < 120; i++) {
+            d.drawText(10, d.getHeight() / 2, String.valueOf(countFrom), 32);
+        }
         countFrom--;
-        numOfSeconds--;
-//        long startTime = System.currentTimeMillis(); // timing
-//        long usedTime = System.currentTimeMillis() - startTime;
-//        long milliSecondLeftToSleep = millisecondsPerFrame - usedTime;
-//        if (milliSecondLeftToSleep > 0) {
-//            sleeper.sleepFor/(milliSecondLeftToSleep);
-//        }
     }
 
 
     @Override
     public boolean shouldStop() {
-        boolean bo = (numOfSeconds > 0);
+        boolean bo = !(countFrom > 0);
 //        return !(numOfSeconds > 0);
         System.out.println(bo);
         return bo;

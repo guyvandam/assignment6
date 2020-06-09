@@ -1,6 +1,6 @@
 package gameobjects.sprites;
 
-import gameobjects.Game;
+import gameobjects.GameLevel;
 import velocity.Velocity;
 import geometryshapes.Ball;
 import geometryshapes.Line;
@@ -105,7 +105,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
      *
      * @param g a GameObjects.Game object. the GameObjects.Game we want to add the GameObjects.Block to.
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         if (g != null) {
             g.addCollidable(this);
             g.addSprite(this);
@@ -117,7 +117,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
      *
      * @param g a Game object.
      */
-    public void removeFromGame(Game g) {
+    public void removeFromGame(GameLevel g) {
         if (g != null) {
             g.removeCollidable(this);
             g.removeSprite(this);

@@ -1,19 +1,19 @@
 package gameobjects.sprites;
 
+import biuoop.DrawSurface;
+import biuoop.KeyboardSensor;
 import gameobjects.CollisionInfo;
-import gameobjects.Game;
 import gameobjects.GameEnvironment;
-import velocity.Velocity;
+import gameobjects.GameLevel;
 import geometryshapes.Ball;
 import geometryshapes.Line;
 import geometryshapes.Point;
 import geometryshapes.Rectangle;
 import interfaces.Collidable;
 import interfaces.Sprite;
-import biuoop.DrawSurface;
-import biuoop.KeyboardSensor;
+import velocity.Velocity;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -37,13 +37,17 @@ public class Paddle implements Sprite, Collidable {
      * @param color           a java.awt.color object.
      * @param gameEnvironment a GameObjects.GameEnvironment object.
      */
-    public Paddle(KeyboardSensor keyboard, Rectangle rect, Color color, GameEnvironment gameEnvironment) {
+    public Paddle(KeyboardSensor keyboard, Rectangle rect, Color color, GameEnvironment gameEnvironment, int paddleSpeed) {
         this.keyboard = keyboard;
         this.rect = rect;
         this.color = color;
         this.gameEnvironment = gameEnvironment;
         this.numOfRegions = 5;
-        this.partOfWidth = 6;
+
+        // the paddle moves sixth of it's width for every key stroke. by dividing the 'partOfWidth' variable by the
+        // input paddleSpeed we get more movement if the paddle speed is higher, and less movement for the lower
+        // paddleSpeed.
+        this.partOfWidth = 6 / paddleSpeed;
     }
 
     /**
@@ -218,7 +222,7 @@ public class Paddle implements Sprite, Collidable {
      *
      * @param g a GameObjects.Game object.
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         if (g != null) {
             g.addSprite(this);
             g.addCollidable(this);

@@ -40,7 +40,6 @@ public class AnimationRunner {
         this.sleeper = sleeper;
     }
 
-    // ...
     public void run(Animation animation) {
         if (animation == null) {
             return;

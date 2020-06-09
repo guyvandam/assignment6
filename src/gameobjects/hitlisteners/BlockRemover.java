@@ -2,7 +2,7 @@ package gameobjects.hitlisteners;
 
 import gameobjects.sprites.Block;
 import gameobjects.Counter;
-import gameobjects.Game;
+import gameobjects.GameLevel;
 import geometryshapes.Ball;
 import interfaces.HitListener;
 
@@ -12,7 +12,7 @@ import interfaces.HitListener;
  * @since 2020-05-28.
  */
 public class BlockRemover implements HitListener {
-    private Game game;
+    private GameLevel game;
     private Counter remainingBlocks;
 
     /**
@@ -21,7 +21,7 @@ public class BlockRemover implements HitListener {
      * @param game            a Game object.
      * @param remainingBlocks a Counter object.
      */
-    public BlockRemover(Game game, Counter remainingBlocks) {
+    public BlockRemover(GameLevel game, Counter remainingBlocks) {
         this.game = game;
         this.remainingBlocks = remainingBlocks;
     }
@@ -29,7 +29,7 @@ public class BlockRemover implements HitListener {
     /**
      * @return a Game object.
      */
-    public Game getGame() {
+    public GameLevel getGame() {
         return this.game;
     }
 

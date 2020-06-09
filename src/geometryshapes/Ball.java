@@ -1,7 +1,7 @@
 package geometryshapes;
 
 import gameobjects.CollisionInfo;
-import gameobjects.Game;
+import gameobjects.GameLevel;
 import gameobjects.GameEnvironment;
 import velocity.Velocity;
 import interfaces.Collidable;
@@ -122,6 +122,10 @@ public class Ball implements Sprite {
         return this.r;
     }
 
+    public void setSize(int r) {
+        this.r = r;
+    }
+
     /**
      * @return an java.awt.Color object. the color of the ball.
      */
@@ -173,6 +177,10 @@ public class Ball implements Sprite {
         if (velocity != null) {
             this.v = velocity;
         }
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     /**
@@ -261,7 +269,7 @@ public class Ball implements Sprite {
      *
      * @param g a GameObjects.Game object. the GameObjects.Game we want to add the ball to.
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         if (g != null) {
             g.addSprite(this);
         }
@@ -271,7 +279,7 @@ public class Ball implements Sprite {
      * removes the ball from the input Game by removing it from the SpriteCollection.
      * @param g a Game object.
      */
-    public void removeFromGame(Game g) {
+    public void removeFromGame(GameLevel g) {
         if (g != null) {
             g.removeSprite(this);
         }

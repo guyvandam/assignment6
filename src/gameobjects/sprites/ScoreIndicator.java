@@ -1,7 +1,7 @@
 package gameobjects.sprites;
 
 import gameobjects.Counter;
-import gameobjects.Game;
+import gameobjects.GameLevel;
 import interfaces.Sprite;
 import biuoop.DrawSurface;
 
@@ -70,7 +70,7 @@ public class ScoreIndicator implements Sprite {
      *
      * @param g a Game object.
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         if (g == null) {
             return;
         }
