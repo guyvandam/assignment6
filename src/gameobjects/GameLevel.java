@@ -347,7 +347,7 @@ public class GameLevel implements Animation {
 //                this.getGuiWidth() - 2 * this.getWidthORHeight(), this.getWidthORHeight()), blockColor);
                 this.getGuiWidth() - 2 * this.getWidthORHeight(), 1), blockColor);
 
-        lower.addHitListener(ballRemover); //turns the lower/bottom block into the DEATH block..
+//        lower.addHitListener(ballRemover); //turns the lower/bottom block into the DEATH block..
 
         Block left = new Block(new Rectangle(new Point(0, this.getWidthORHeight()), this.getWidthORHeight(),
                 this.getGuiHeight() - this.getWidthORHeight()), blockColor);

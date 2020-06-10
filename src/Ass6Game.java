@@ -1,6 +1,6 @@
 import gameobjects.GameLevel;
 import gameobjects.gamelevels.DirectHitLevel;
-//import gameobjects.gamelevels.FinalFourLevel;
+import gameobjects.gamelevels.FinalFourLevel;
 import gameobjects.gamelevels.Green3Level;
 import gameobjects.gamelevels.WideEasyLevel;
 
@@ -20,8 +20,8 @@ public class Ass6Game {
     public static void main(String[] args) {
 //        GameLevel game = new GameLevel(800, 600,new DirectHitLevel(800,600));
 //        GameLevel game = new GameLevel(800, 600, new WideEasyLevel(800, 600));
-        GameLevel game = new GameLevel(800, 600, new Green3Level());
-//        GameLevel game = new GameLevel(800, 600, new FindException());
+//        GameLevel game = new GameLevel(800, 600, new Green3Level());
+        GameLevel game = new GameLevel(800, 600, new FinalFourLevel());
 
         game.initialize();
         game.run();

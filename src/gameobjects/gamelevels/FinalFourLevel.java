@@ -25,7 +25,7 @@ public class FinalFourLevel implements LevelInformation {
 
     @Override
     public List<Velocity> initialBallVelocities() {
-        int angle = 60, speed = 4;
+        int angle = 60, speed = 1;
         List<Velocity> velocityList = new ArrayList<>();
         for (int i = 0; i < this.numberOfBalls(); i++) {
             velocityList.add(Velocity.fromAngleAndSpeed(angle + i * 30, speed));
@@ -56,15 +56,21 @@ public class FinalFourLevel implements LevelInformation {
     @Override
     public List<Block> blocks() {
         List<Block> blockList = new ArrayList<>();
-        java.awt.Color[] colors = {Color.gray, Color.red, Color.yellow, Color.GREEN, Color.WHITE, Color.pink, Color.cyan};
+//        java.awt.Color[] colors = {Color.gray, Color.red, Color.yellow, Color.GREEN, Color.WHITE, Color.pink, Color.cyan};
+        java.awt.Color[] colors = {Color.gray, Color.red};
 
-        int startX = Constants.widthOrHeight, startY = 100, blockWidth = 51, blockHeight = 25,
-                numOfBlocks = (Constants.guiWidth - 2 * Constants.widthOrHeight) / blockWidth;
-        for (int i = 0; i < colors.length; i++) {
+        int startX = Constants.widthOrHeight + -1, startY = 100, blockWidth = 50, blockHeight = 50,
+                numOfBlocks = (Constants.guiWidth - 2 * Constants.widthOrHeight) / blockWidth,
+                tempX = startX, tempY = startY;
+
+        for (Color color : colors) {
             for (int j = 0; j < numOfBlocks; j++) {
-                blockList.add(new Block(new Rectangle(new Point(startX + blockWidth * j, startY + blockHeight * i),
-                        blockWidth, blockHeight), colors[i]));
+                blockList.add(new Block(new Rectangle(new Point(tempX, tempY),
+                        blockWidth, blockHeight), color));
+                tempX += blockWidth + 1;
             }
+            tempY += blockHeight + 1;
+            tempX = startX;
         }
 
         return blockList;

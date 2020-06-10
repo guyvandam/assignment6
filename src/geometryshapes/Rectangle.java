@@ -181,7 +181,7 @@ public class Rectangle {
     public void drawOn(DrawSurface d, Color color) {
         if (d != null) {
             d.setColor(Color.BLACK);
-            d.drawRectangle((int) this.getUpperLeft().getX() - 1,
+            d.drawRectangle((int) this.getUpperLeft().getX()-1,
                     (int) this.getUpperLeft().getY() - 1, (int) this.getWidth() + 1,
                     (int) this.getHeight() + 1);
             d.setColor(color);
