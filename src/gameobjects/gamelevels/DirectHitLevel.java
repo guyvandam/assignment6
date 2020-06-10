@@ -21,11 +21,11 @@ public class DirectHitLevel implements LevelInformation {
     private int centerY;
 
 
-    public DirectHitLevel() {
-        this.guiWidth = 800;
-        this.guiHeight = 600;
+    public DirectHitLevel(int guiWidth, int guiHeight) {
+        this.guiWidth = guiWidth;
+        this.guiHeight = guiHeight;
         this.centerX = this.getGuiWidth() / 2;
-        this.centerY = (this.getGuiHeight() - widthORHeight) / 4 + widthORHeight / 2;
+        this.centerY = (this.getGuiHeight() - widthORHeight) / 3 + widthORHeight / 2;
 
     }
 
@@ -44,7 +44,7 @@ public class DirectHitLevel implements LevelInformation {
 
     @Override
     public List<Velocity> initialBallVelocities() {
-        Velocity v = new Velocity(0, -3);
+        Velocity v = new Velocity(0, -7);
         return new ArrayList<>() {
             {
                 add(v);
@@ -54,12 +54,12 @@ public class DirectHitLevel implements LevelInformation {
 
     @Override
     public int paddleSpeed() {
-        return 1;
+        return 10;
     }
 
     @Override
     public int paddleWidth() {
-        return 60;
+        return 80;
     }
 
     @Override

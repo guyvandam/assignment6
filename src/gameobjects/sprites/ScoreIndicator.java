@@ -1,11 +1,11 @@
 package gameobjects.sprites;
 
+import biuoop.DrawSurface;
 import gameobjects.Counter;
 import gameobjects.GameLevel;
 import interfaces.Sprite;
-import biuoop.DrawSurface;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -15,6 +15,7 @@ import java.awt.Color;
 public class ScoreIndicator implements Sprite {
     private Counter currentScore;
     private Block block;
+    private String levelName;
 
     /**
      * constructor function.
@@ -22,9 +23,10 @@ public class ScoreIndicator implements Sprite {
      * @param currentScore a Counter object.
      * @param block        a Block object.
      */
-    public ScoreIndicator(Counter currentScore, Block block) {
+    public ScoreIndicator(Counter currentScore, Block block, String levelName) {
         this.currentScore = currentScore;
         this.block = block;
+        this.levelName = levelName;
     }
 
     /**
@@ -42,6 +44,10 @@ public class ScoreIndicator implements Sprite {
         return block;
     }
 
+    public String getLevelName() {
+        return levelName;
+    }
+
     /**
      * draws the sprite on the input surface.
      *
@@ -50,11 +56,12 @@ public class ScoreIndicator implements Sprite {
     @Override
     public void drawOn(DrawSurface d) {
         String display = "Score: " + this.getCurrentScore().getValue();
-        int fontSize = 15, x = (int) this.getBlock().getRect().getWidth() / 2, y = fontSize;
+        int fontSize = 15, x = (int) this.getBlock().getRect().getWidth() / 3, y = fontSize;
         if (d != null) {
             this.getBlock().drawOn(d);
             d.setColor(Color.BLACK);
             d.drawText(x, y, display, fontSize);
+            d.drawText(2*x, y, "Level Name: " + this.getLevelName(), fontSize);
         }
     }
 

@@ -1,8 +1,7 @@
 package gameobjects.sprites;
 
+import biuoop.DrawSurface;
 import gameobjects.GameLevel;
-import velocity.Velocity;
-import geometryshapes.Ball;
 import geometryshapes.Line;
 import geometryshapes.Point;
 import geometryshapes.Rectangle;
@@ -10,9 +9,9 @@ import interfaces.Collidable;
 import interfaces.HitListener;
 import interfaces.HitNotifier;
 import interfaces.Sprite;
-import biuoop.DrawSurface;
+import velocity.Velocity;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +37,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
         this.color = color;
         this.hitListeners = new ArrayList<>();
     }
+
 
     /**
      * @return a GeometryShapes.Rectangle object. the block's GeometryShapes.Rectangle value.
@@ -83,15 +83,15 @@ public class Block implements Collidable, Sprite, HitNotifier {
     @Override
     public void drawOn(DrawSurface surface) {
         if (surface != null) {
-            surface.setColor(Color.BLACK);
-            surface.drawRectangle((int) this.getRect().getUpperLeft().getX(), (int)
-                            this.getRect().getUpperLeft().getY(),
-                    (int) this.getRect().getWidth(), (int) this.getRect().getHeight());
-            surface.setColor(this.color);
-            surface.fillRectangle((int) this.getRect().getUpperLeft().getX() + 1, (int)
-                            this.getRect().getUpperLeft().getY() + 1,
-                    (int) this.getRect().getWidth() - 1, (int) this.getRect().getHeight() - 1);
-
+//            surface.setColor(Color.BLACK);
+//            surface.drawRectangle((int) this.getRect().getUpperLeft().getX(), (int)
+//                            this.getRect().getUpperLeft().getY(),
+//                    (int) this.getRect().getWidth(), (int) this.getRect().getHeight());
+//            surface.setColor(this.color);
+//            surface.fillRectangle((int) this.getRect().getUpperLeft().getX() + 1, (int)
+//                            this.getRect().getUpperLeft().getY() + 1,
+//                    (int) this.getRect().getWidth() - 1, (int) this.getRect().getHeight() - 1);
+            this.getRect().drawOn(surface, this.color);
 
         }
     }

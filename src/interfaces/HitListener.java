@@ -1,7 +1,7 @@
 package interfaces;
 
 import gameobjects.sprites.Block;
-import geometryshapes.Ball;
+import gameobjects.sprites.Ball;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>

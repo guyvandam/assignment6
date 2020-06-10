@@ -12,7 +12,7 @@ import gameobjects.hitlisteners.ScoreTrackingListener;
 import gameobjects.sprites.Block;
 import gameobjects.sprites.Paddle;
 import gameobjects.sprites.ScoreIndicator;
-import geometryshapes.Ball;
+import gameobjects.sprites.Ball;
 import geometryshapes.Point;
 import geometryshapes.Rectangle;
 import interfaces.*;
@@ -57,7 +57,7 @@ public class GameLevel implements Animation {
         this.remainingBlocks = new Counter();
         this.remainingBalls = new Counter();
         this.currentScore = new Counter();
-        this.gui = new GUI("title", getGuiWidth(), getGuiHeight());
+        this.gui = new GUI("Arkanoid", getGuiWidth(), getGuiHeight());
         this.runner = new AnimationRunner(this.gui, 60, new Sleeper());
         this.keyboard = this.getGui().getKeyboardSensor();
         this.levelInformation = levelInformation;
@@ -288,7 +288,7 @@ public class GameLevel implements Animation {
      */
     public void addPaddle() {
         int paddleWidth = this.getLevelInformation().paddleWidth(),
-                paddleHeight = 10, paddleX = (this.guiWidth - paddleWidth) / 2,
+                paddleHeight = 20, paddleX = (this.guiWidth - paddleWidth) / 2,
                 paddleY = this.getGuiHeight() - this.getWidthORHeight() - paddleHeight;
         java.awt.Color paddleColor = Color.ORANGE;
 
@@ -368,7 +368,7 @@ public class GameLevel implements Animation {
     public void addIndicatorBlock() {
         Block indicatorBlock = new Block(new Rectangle(new Point(0, 0), this.getGuiWidth(), this.getWidthORHeight()),
                 Color.WHITE);
-        ScoreIndicator scoreTrackingListener = new ScoreIndicator(this.getCurrentScore(), indicatorBlock);
+        ScoreIndicator scoreTrackingListener = new ScoreIndicator(this.getCurrentScore(), indicatorBlock,this.getLevelInformation().levelName());
         scoreTrackingListener.addToGame(this);
 
 

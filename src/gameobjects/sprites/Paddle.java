@@ -5,7 +5,6 @@ import biuoop.KeyboardSensor;
 import gameobjects.CollisionInfo;
 import gameobjects.GameEnvironment;
 import gameobjects.GameLevel;
-import geometryshapes.Ball;
 import geometryshapes.Line;
 import geometryshapes.Point;
 import geometryshapes.Rectangle;
@@ -47,7 +46,7 @@ public class Paddle implements Sprite, Collidable {
         // the paddle moves sixth of it's width for every key stroke. by dividing the 'partOfWidth' variable by the
         // input paddleSpeed we get more movement if the paddle speed is higher, and less movement for the lower
         // paddleSpeed.
-        this.partOfWidth = 6 / paddleSpeed;
+        this.partOfWidth = 60 / paddleSpeed;
     }
 
     /**
@@ -145,9 +144,14 @@ public class Paddle implements Sprite, Collidable {
     @Override
     public void drawOn(DrawSurface d) {
         if (d != null) {
-            d.setColor(this.color);
-            d.fillRectangle((int) this.getRect().getUpperLeft().getX(), (int) this.getRect().getUpperLeft().getY(),
-                    (int) this.getRect().getWidth(), (int) this.getRect().getHeight());
+//            d.setColor(Color.BLACK);
+//            d.drawRectangle((int) this.getRect().getUpperLeft().getX() - 1,
+//                    (int) this.getRect().getUpperLeft().getY() - 1, (int) this.getRect().getWidth() + 1,
+//                    (int) this.getRect().getHeight() + 1);
+//            d.setColor(this.color);
+//            d.fillRectangle((int) this.getRect().getUpperLeft().getX(), (int) this.getRect().getUpperLeft().getY(),
+//                    (int) this.getRect().getWidth(), (int) this.getRect().getHeight());
+            this.getRect().drawOn(d, this.color);
         }
     }
 

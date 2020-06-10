@@ -1,7 +1,7 @@
 package interfaces;
 
 import velocity.Velocity;
-import geometryshapes.Ball;
+import gameobjects.sprites.Ball;
 import geometryshapes.Point;
 import geometryshapes.Rectangle;
 

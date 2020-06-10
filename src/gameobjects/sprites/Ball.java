@@ -1,14 +1,16 @@
-package geometryshapes;
+package gameobjects.sprites;
 
+import biuoop.DrawSurface;
 import gameobjects.CollisionInfo;
-import gameobjects.GameLevel;
 import gameobjects.GameEnvironment;
-import velocity.Velocity;
+import gameobjects.GameLevel;
+import geometryshapes.Line;
+import geometryshapes.Point;
 import interfaces.Collidable;
 import interfaces.Sprite;
-import biuoop.DrawSurface;
+import velocity.Velocity;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -133,6 +135,10 @@ public class Ball implements Sprite {
         return this.color;
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     /**
      * draws the ball on the input surface. in the color of the "color" field.
      *
@@ -141,6 +147,8 @@ public class Ball implements Sprite {
     @Override
     public void drawOn(DrawSurface surface) {
         if (surface != null) {
+            surface.setColor(Color.BLACK);
+            surface.drawCircle(getX(), getY(), this.r +1);
             surface.setColor(this.color);
             surface.fillCircle(getX(), getY(), this.r);
         }
@@ -177,10 +185,6 @@ public class Ball implements Sprite {
         if (velocity != null) {
             this.v = velocity;
         }
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
     }
 
     /**
@@ -277,6 +281,7 @@ public class Ball implements Sprite {
 
     /**
      * removes the ball from the input Game by removing it from the SpriteCollection.
+     *
      * @param g a Game object.
      */
     public void removeFromGame(GameLevel g) {
