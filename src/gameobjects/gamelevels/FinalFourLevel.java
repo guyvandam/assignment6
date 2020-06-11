@@ -56,20 +56,19 @@ public class FinalFourLevel implements LevelInformation {
     @Override
     public List<Block> blocks() {
         List<Block> blockList = new ArrayList<>();
-//        java.awt.Color[] colors = {Color.gray, Color.red, Color.yellow, Color.GREEN, Color.WHITE, Color.pink, Color.cyan};
-        java.awt.Color[] colors = {Color.gray, Color.red};
+        java.awt.Color[] colors = {Color.gray, Color.red, Color.yellow, Color.GREEN, Color.WHITE, Color.pink, Color.cyan};
 
-        int startX = Constants.widthOrHeight + -1, startY = 100, blockWidth = 50, blockHeight = 50,
-                numOfBlocks = (Constants.guiWidth - 2 * Constants.widthOrHeight) / blockWidth,
-                tempX = startX, tempY = startY;
+        int startX = Constants.widthOrHeight + 1, startY = 100, numOfBlocks = 15, blockHeight = 25,
+                blockWidth = (Constants.guiWidth - startX) / numOfBlocks - 1,
+                tempX = startX;
 
         for (Color color : colors) {
             for (int j = 0; j < numOfBlocks; j++) {
-                blockList.add(new Block(new Rectangle(new Point(tempX, tempY),
+                blockList.add(new Block(new Rectangle(new Point(tempX, startY),
                         blockWidth, blockHeight), color));
-                tempX += blockWidth + 1;
+                tempX += blockWidth;
             }
-            tempY += blockHeight + 1;
+            startY += blockHeight;
             tempX = startX;
         }
 
