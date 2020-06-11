@@ -1,6 +1,7 @@
 package gameobjects.gamelevels;
 
 import biuoop.DrawSurface;
+import constants.Constants;
 import gameobjects.sprites.Block;
 import geometryshapes.Point;
 import geometryshapes.Rectangle;
@@ -18,9 +19,9 @@ public class WideEasyLevel implements LevelInformation {
 
     private int widthOfBorders = 20;
 
-    public WideEasyLevel(int guiWidth, int guiHeight) {
-        this.guiWidth = guiWidth;
-        this.guiHeight = guiHeight;
+    public WideEasyLevel() {
+        this.guiWidth = Constants.guiWidth;
+        this.guiHeight = Constants.guiHeight;
     }
 
     public int getGuiWidth() {
@@ -39,7 +40,7 @@ public class WideEasyLevel implements LevelInformation {
     @Override
     public List<Velocity> initialBallVelocities() {
         List<Velocity> velocities = new ArrayList<>();
-        int speed = 4, delta = 9, angle = 90 - 5 * delta;
+        int speed = 6, delta = 9, angle = 90 - 5 * delta;
         for (int i = 0; i < 11; i++) {
             if (angle != 90) {
                 velocities.add(Velocity.fromAngleAndSpeed(angle, speed));

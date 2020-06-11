@@ -2,7 +2,7 @@ package gameobjects.sprites;
 
 import biuoop.DrawSurface;
 import gameobjects.Counter;
-import gameobjects.GameLevel;
+import gameobjects.gamelevels.GameLevel;
 import interfaces.Sprite;
 
 import java.awt.*;

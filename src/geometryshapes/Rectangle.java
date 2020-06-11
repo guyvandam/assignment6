@@ -185,8 +185,8 @@ public class Rectangle {
                     (int) this.getUpperLeft().getY(), (int) this.getWidth(),
                     (int) this.getHeight());
             d.setColor(color);
-            d.fillRectangle((int) this.getUpperLeft().getX()+1, (int) this.getUpperLeft().getY()+1,
-                    (int) this.getWidth()-1, (int) this.getHeight()-1);
+            d.fillRectangle((int) this.getUpperLeft().getX() + 1, (int) this.getUpperLeft().getY() + 1,
+                    (int) this.getWidth() - 1, (int) this.getHeight() - 1);
 
         }
     }

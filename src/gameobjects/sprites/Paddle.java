@@ -4,7 +4,7 @@ import biuoop.DrawSurface;
 import biuoop.KeyboardSensor;
 import gameobjects.CollisionInfo;
 import gameobjects.GameEnvironment;
-import gameobjects.GameLevel;
+import gameobjects.gamelevels.GameLevel;
 import geometryshapes.Line;
 import geometryshapes.Point;
 import geometryshapes.Rectangle;

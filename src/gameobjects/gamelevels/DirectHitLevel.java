@@ -1,6 +1,7 @@
 package gameobjects.gamelevels;
 
 import biuoop.DrawSurface;
+import constants.Constants;
 import gameobjects.sprites.Block;
 import geometryshapes.Point;
 import geometryshapes.Rectangle;
@@ -21,9 +22,9 @@ public class DirectHitLevel implements LevelInformation {
     private int centerY;
 
 
-    public DirectHitLevel(int guiWidth, int guiHeight) {
-        this.guiWidth = guiWidth;
-        this.guiHeight = guiHeight;
+    public DirectHitLevel() {
+        this.guiWidth = Constants.guiWidth;
+        this.guiHeight = Constants.guiHeight;
         this.centerX = this.getGuiWidth() / 2;
         this.centerY = (this.getGuiHeight() - widthORHeight) / 3 + widthORHeight / 2;
 
@@ -76,7 +77,7 @@ public class DirectHitLevel implements LevelInformation {
                 if (d != null) {
                     d.setColor(Color.BLACK);
                     d.fillRectangle(0, 0, getGuiWidth(), getGuiHeight());
-                    this.drawCircles(d, r,numOfCircles);
+                    this.drawCircles(d, r, numOfCircles);
                     d.drawLine(centerX - halfALine, centerY, centerX + halfALine, centerY);
                     d.drawLine(centerX, centerY - halfALine, centerX, centerY + halfALine);
 

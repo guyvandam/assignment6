@@ -2,7 +2,7 @@ package gameobjects.hitlisteners;
 
 import gameobjects.sprites.Block;
 import gameobjects.Counter;
-import gameobjects.GameLevel;
+import gameobjects.gamelevels.GameLevel;
 import gameobjects.sprites.Ball;
 import interfaces.HitListener;
 

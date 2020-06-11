@@ -25,7 +25,7 @@ public class FinalFourLevel implements LevelInformation {
 
     @Override
     public List<Velocity> initialBallVelocities() {
-        int angle = 60, speed = 1;
+        int angle = 60, speed = 5;
         List<Velocity> velocityList = new ArrayList<>();
         for (int i = 0; i < this.numberOfBalls(); i++) {
             velocityList.add(Velocity.fromAngleAndSpeed(angle + i * 30, speed));
@@ -64,14 +64,19 @@ public class FinalFourLevel implements LevelInformation {
 
         for (Color color : colors) {
             for (int j = 0; j < numOfBlocks; j++) {
+                if(j==numOfBlocks/2){
+                    System.out.println(j);
+                    blockWidth += 8;
+                }
                 blockList.add(new Block(new Rectangle(new Point(tempX, startY),
                         blockWidth, blockHeight), color));
+
                 tempX += blockWidth;
+                blockWidth = (Constants.guiWidth - startX) / numOfBlocks - 1;
             }
             startY += blockHeight;
             tempX = startX;
         }
-
         return blockList;
     }
 

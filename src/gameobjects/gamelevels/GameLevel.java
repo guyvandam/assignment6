@@ -1,18 +1,21 @@
-package gameobjects;
+package gameobjects.gamelevels;
 
 import biuoop.DrawSurface;
 import biuoop.GUI;
 import biuoop.KeyboardSensor;
-import biuoop.Sleeper;
+import constants.Constants;
+import gameobjects.Counter;
+import gameobjects.GameEnvironment;
+import gameobjects.SpriteCollection;
 import gameobjects.animation.AnimationRunner;
 import gameobjects.animation.PauseScreen;
 import gameobjects.hitlisteners.BallRemover;
 import gameobjects.hitlisteners.BlockRemover;
 import gameobjects.hitlisteners.ScoreTrackingListener;
+import gameobjects.sprites.Ball;
 import gameobjects.sprites.Block;
 import gameobjects.sprites.Paddle;
 import gameobjects.sprites.ScoreIndicator;
-import gameobjects.sprites.Ball;
 import geometryshapes.Point;
 import geometryshapes.Rectangle;
 import interfaces.*;
@@ -45,21 +48,23 @@ public class GameLevel implements Animation {
 
     /**
      * constractur function.
-     *
-     * @param guiWidth  the GUI window width
-     * @param guiHeight the GUI window height.
      */
-    public GameLevel(int guiWidth, int guiHeight, LevelInformation levelInformation) {
+    public GameLevel(LevelInformation levelInformation, AnimationRunner runner, KeyboardSensor keyboardSensor,
+                     Counter currentScore) {
         this.sprites = new SpriteCollection();
         this.environment = new GameEnvironment();
-        this.guiWidth = guiWidth;
-        this.guiHeight = guiHeight;
+        this.guiWidth = Constants.guiWidth;
+        this.guiHeight = Constants.guiHeight;
         this.remainingBlocks = new Counter();
         this.remainingBalls = new Counter();
-        this.currentScore = new Counter();
-        this.gui = new GUI("Arkanoid", getGuiWidth(), getGuiHeight());
-        this.runner = new AnimationRunner(this.gui, 60, new Sleeper());
-        this.keyboard = this.getGui().getKeyboardSensor();
+//        this.currentScore = new Counter();
+        this.currentScore = currentScore;
+//        this.runner = new AnimationRunner(this.gui, 60, new Sleeper());
+        this.runner = runner;
+//        this.gui = new GUI("Arkanoid", getGuiWidth(), getGuiHeight());
+        this.gui = this.runner.getGui();
+//        this.keyboard = this.getGui().getKeyboardSensor();
+        this.keyboard = keyboardSensor;
         this.levelInformation = levelInformation;
     }
 
@@ -347,7 +352,7 @@ public class GameLevel implements Animation {
 //                this.getGuiWidth() - 2 * this.getWidthORHeight(), this.getWidthORHeight()), blockColor);
                 this.getGuiWidth() - 2 * this.getWidthORHeight(), 1), blockColor);
 
-//        lower.addHitListener(ballRemover); //turns the lower/bottom block into the DEATH block..
+        lower.addHitListener(ballRemover); //turns the lower/bottom block into the DEATH block..
 
         Block left = new Block(new Rectangle(new Point(0, this.getWidthORHeight()), this.getWidthORHeight(),
                 this.getGuiHeight() - this.getWidthORHeight()), blockColor);
@@ -368,7 +373,7 @@ public class GameLevel implements Animation {
     public void addIndicatorBlock() {
         Block indicatorBlock = new Block(new Rectangle(new Point(0, 0), this.getGuiWidth(), this.getWidthORHeight()),
                 Color.WHITE);
-        ScoreIndicator scoreTrackingListener = new ScoreIndicator(this.getCurrentScore(), indicatorBlock,this.getLevelInformation().levelName());
+        ScoreIndicator scoreTrackingListener = new ScoreIndicator(this.getCurrentScore(), indicatorBlock, this.getLevelInformation().levelName());
         scoreTrackingListener.addToGame(this);
 
 
@@ -454,12 +459,11 @@ public class GameLevel implements Animation {
         //stopping conditions
         if (this.getRemainingBlocks().getValue() == 0) {
             this.getCurrentScore().increase(100);
-            this.getGui().close();
+            this.running = false;
         }
 
         if (this.getRemainingBalls().getValue() == 0) {
-            this.getGui().close();
-            return;
+            this.running = false;
         }
 
         if (this.keyboard.isPressed("p")) {

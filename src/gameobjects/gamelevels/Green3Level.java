@@ -20,7 +20,7 @@ public class Green3Level implements LevelInformation {
 
     @Override
     public List<Velocity> initialBallVelocities() {
-        int speed = 4, angle = 45;
+        int speed = 5, angle = 45;
         return new ArrayList<>() {
             {
                 add(Velocity.fromAngleAndSpeed(angle, speed));
@@ -55,8 +55,8 @@ public class Green3Level implements LevelInformation {
 
         java.awt.Color[] colors = {Color.gray, Color.red, Color.yellow, Color.BLUE, Color.WHITE};
 
-        int blockWidth = 50, blockHeight = 20;
-        int numOfRows = colors.length, numOfColumns = 12;
+        int blockWidth = 40, blockHeight = 20;
+        int numOfRows = colors.length, numOfColumns = 10;
         int startX = Constants.guiWidth - numOfColumns * blockWidth - Constants.widthOrHeight - 1, startY = 100;
 
         int rowCounter = 0, columnCounter;

@@ -3,7 +3,7 @@ package gameobjects.sprites;
 import biuoop.DrawSurface;
 import gameobjects.CollisionInfo;
 import gameobjects.GameEnvironment;
-import gameobjects.GameLevel;
+import gameobjects.gamelevels.GameLevel;
 import geometryshapes.Line;
 import geometryshapes.Point;
 import interfaces.Collidable;
