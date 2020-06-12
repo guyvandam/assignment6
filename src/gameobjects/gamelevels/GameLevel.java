@@ -8,6 +8,7 @@ import gameobjects.Counter;
 import gameobjects.GameEnvironment;
 import gameobjects.SpriteCollection;
 import gameobjects.animation.AnimationRunner;
+import gameobjects.animation.KeyPressStoppableAnimation;
 import gameobjects.animation.PauseScreen;
 import gameobjects.hitlisteners.BallRemover;
 import gameobjects.hitlisteners.BlockRemover;
@@ -145,6 +146,10 @@ public class GameLevel implements Animation {
 
     public LevelInformation getLevelInformation() {
         return levelInformation;
+    }
+
+    public KeyboardSensor getKeyboard() {
+        return keyboard;
     }
 
     /**
@@ -467,7 +472,8 @@ public class GameLevel implements Animation {
         }
 
         if (this.keyboard.isPressed("p")) {
-            this.runner.run(new PauseScreen(this.keyboard));
+//            this.runner.run(new PauseScreen(this.keyboard));
+            this.runner.run(new KeyPressStoppableAnimation(this.getKeyboard(), KeyboardSensor.SPACE_KEY, new PauseScreen()));
         }
     }
 

@@ -1,29 +1,38 @@
 package gameobjects.animation;
 
 import biuoop.DrawSurface;
-import biuoop.KeyboardSensor;
 import interfaces.Animation;
 
 public class PauseScreen implements Animation {
-    private KeyboardSensor keyboard;
-    private boolean stop;
+//    private boolean stop;
 
-    public PauseScreen(KeyboardSensor k) {
-        this.keyboard = k;
-        this.stop = false;
-    }
+//    public PauseScreen() {
+//        this.stop = false;
+//    }
+///
+//    public boolean isStop() {
+//        return stop;
+//    }
+//
+//    public void setStop(boolean stop) {
+//        this.stop = stop;
+//    }
 
     public void doOneFrame(DrawSurface d) {
-        if (d == null) {
-            return;
+        if (d != null) {
+            d.drawText(10, d.getHeight() / 2, "paused -- press space to continue", 32);
         }
-        d.drawText(10, d.getHeight() / 2, "paused -- press space to continue", 32);
-        if (this.keyboard.isPressed(KeyboardSensor.SPACE_KEY)) {
-            this.stop = true;
-        }
+
+//        if (d == null) {
+//            return;
+//        }
+//        if (this.keyboard.isPressed(KeyboardSensor.SPACE_KEY)) {
+//            this.stop = true;
+//        }
+
     }
 
     public boolean shouldStop() {
-        return this.stop;
+        return false;
     }
 }

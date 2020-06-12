@@ -1,7 +1,7 @@
 package gameobjects.gamelevels;
 
 import constants.Constants;
-import gameobjects.animation.Background;
+import gameobjects.sprites.Background;
 import gameobjects.sprites.Block;
 import geometryshapes.Point;
 import geometryshapes.Rectangle;

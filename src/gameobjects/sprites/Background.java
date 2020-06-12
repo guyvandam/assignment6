@@ -1,4 +1,4 @@
-package gameobjects.animation;
+package gameobjects.sprites;
 
 import biuoop.DrawSurface;
 import constants.Constants;
