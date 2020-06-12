@@ -13,34 +13,47 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DirectHitLevel implements LevelInformation {
-    private int guiWidth;
-    private int guiHeight;
-
-    private int widthORHeight = 30;
-    private int centerX;
-    private int centerY;
+public class DirectHitLevel extends Level implements LevelInformation {
+    //the width and height of the red block in the middle of the target.
+    private final int widthORHeight = 30;
+    // the center x position of the target drawing and the red block.
+    private final int centerX = this.getGuiWidth() / 2;
+    // the center y position of the target drawing and the red block.
+    private final int centerY = (this.getGuiHeight() - widthORHeight) / 3 + widthORHeight / 2;
 
 
     public DirectHitLevel() {
-        this.guiWidth = Constants.guiWidth;
-        this.guiHeight = Constants.guiHeight;
-        this.centerX = this.getGuiWidth() / 2;
-        this.centerY = (this.getGuiHeight() - widthORHeight) / 3 + widthORHeight / 2;
+        super("Direct Hit");
+//        this.guiWidth = Constants.guiWidth;
+//        this.guiHeight = Constants.guiHeight;
+//        this.centerX = this.getGuiWidth() / 2;
+//        this.centerY = (this.getGuiHeight() - widthORHeight) / 3 + widthORHeight / 2;
 
     }
 
     public int getGuiWidth() {
-        return guiWidth;
+        return Constants.guiWidth;
     }
 
     public int getGuiHeight() {
-        return guiHeight;
+        return Constants.guiHeight;
+    }
+
+    public int getWidthORHeight() {
+        return widthORHeight;
+    }
+
+    public int getCenterX() {
+        return centerX;
+    }
+
+    public int getCenterY() {
+        return centerY;
     }
 
     @Override
     public int numberOfBalls() {
-        return 1;
+        return this.initialBallVelocities().size();
     }
 
     @Override
@@ -55,17 +68,21 @@ public class DirectHitLevel implements LevelInformation {
 
     @Override
     public int paddleSpeed() {
-        return 10;
+
+//        return 10;
+        return super.getPaddleSpeed();
     }
 
     @Override
     public int paddleWidth() {
-        return 80;
+//        return 80;
+        return super.getPaddleWidth();
     }
 
     @Override
     public String levelName() {
-        return "Direct Hit";
+//        return "Direct Hit";
+        return super.getLevelName();
     }
 
     @Override
@@ -104,8 +121,9 @@ public class DirectHitLevel implements LevelInformation {
     public List<Block> blocks() {
 //        int widthORHeight = 30;
 //        Block b = new Block(new Rectangle(new Point((this.getGuiWidth() - widthORHeight) / 2, (this.getGuiHeight() - widthORHeight) / 3), widthORHeight, widthORHeight), Color.RED);
-        Block b = new Block(new Rectangle(new Point(centerX - (widthORHeight / 2), centerY - (widthORHeight / 2)),
-                widthORHeight, widthORHeight), Color.RED);
+        Block b = new Block(new Rectangle(new Point(this.getCenterX() - (this
+                .getWidthORHeight() / 2), this.getCenterY() - (this.getWidthORHeight() / 2)),
+                this.getWidthORHeight(), this.getWidthORHeight()), Color.RED);
         return new ArrayList<>() {
             {
                 add(b);

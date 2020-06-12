@@ -12,7 +12,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Green3Level implements LevelInformation {
+public class Green3Level extends Level implements LevelInformation {
+    public Green3Level() {
+        super("Green 3");
+    }
+
     @Override
     public int numberOfBalls() {
         return initialBallVelocities().size();
@@ -31,17 +35,20 @@ public class Green3Level implements LevelInformation {
 
     @Override
     public int paddleSpeed() {
-        return 10;
+//        return 10;
+        return super.getPaddleSpeed();
     }
 
     @Override
     public int paddleWidth() {
-        return 80;
+//        return 80;
+        return super.getPaddleWidth();
     }
 
     @Override
     public String levelName() {
-        return "Green 3";
+//        return "Green 3";
+        return super.getLevelName();
     }
 
     @Override

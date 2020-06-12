@@ -12,15 +12,19 @@ import velocity.Velocity;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
-public class FinalFourLevel implements LevelInformation {
-
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-06-12.
+ */
+public class FinalFourLevel extends Level implements LevelInformation {
     public FinalFourLevel() {
+        super("Final Four");
     }
 
     @Override
     public int numberOfBalls() {
-        return 3;
+        return this.initialBallVelocities().size();
     }
 
     @Override
@@ -35,17 +39,19 @@ public class FinalFourLevel implements LevelInformation {
 
     @Override
     public int paddleSpeed() {
-        return 10;
+        return super.getPaddleSpeed();
     }
 
     @Override
     public int paddleWidth() {
-        return 80;
+//        return 80;
+        return super.getPaddleWidth();
     }
 
     @Override
     public String levelName() {
-        return "Final Four";
+//        return "Final Four";
+        return super.getLevelName();
     }
 
     @Override
@@ -64,7 +70,7 @@ public class FinalFourLevel implements LevelInformation {
 
         for (Color color : colors) {
             for (int j = 0; j < numOfBlocks; j++) {
-                if(j==numOfBlocks/2){
+                if (j == numOfBlocks / 2) {
                     System.out.println(j);
                     blockWidth += 8;
                 }
