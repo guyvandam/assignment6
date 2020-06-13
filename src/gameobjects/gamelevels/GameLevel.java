@@ -7,6 +7,7 @@ import gameobjects.Counter;
 import gameobjects.GameEnvironment;
 import gameobjects.SpriteCollection;
 import gameobjects.animation.AnimationRunner;
+import gameobjects.animation.CountdownAnimation;
 import gameobjects.animation.KeyPressStoppableAnimation;
 import gameobjects.animation.PauseScreen;
 import gameobjects.hitlisteners.BallRemover;
@@ -169,7 +170,6 @@ public class GameLevel implements Animation {
     }
 
     /**
-     *
      * @return a BallRemover object.
      */
     public BallRemover getBallRemover() {
@@ -177,7 +177,6 @@ public class GameLevel implements Animation {
     }
 
     /**
-     *
      * @return a java-List of HitListeners objects.
      */
     public List<HitListener> getBlockHitListeners() {
@@ -268,8 +267,9 @@ public class GameLevel implements Animation {
     }
 
     public void addBalls() {
-        int size = 4,
-                startX = this.getGuiWidth() / 2, startY = this.getGuiHeight() - 2 * this.getWidthORHeight() - size;
+        int size = Constants.ballSize,
+                startX = this.getGuiWidth() / 2, startY =
+                this.getGuiHeight() - this.getWidthORHeight() - size - Constants.paddleHeight - Constants.PixelsBetweenBallAndPaddle;
         int numOfBalls = this.getLevelInformation().numberOfBalls();
 
         Ball[] balls = new Ball[numOfBalls];
@@ -497,7 +497,7 @@ public class GameLevel implements Animation {
 //        }
 //    }
     public void run() {
-//        this.runner.run(new CountdownAnimation(1,20,this.getSprites())); // countdown before turn starts.
+        this.runner.run(new CountdownAnimation(2, 3, this.getSprites())); // countdown before turn starts.
         this.running = true;
         this.runner.run(this);
     }

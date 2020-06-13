@@ -20,12 +20,11 @@ public class AnimationRunner {
      *
      * @param gui             a BIU-OOP GUI object.
      * @param framesPerSecond an integer.
-     * @param sleeper         a BIU-OOP object.
      */
-    public AnimationRunner(GUI gui, int framesPerSecond, Sleeper sleeper) {
+    public AnimationRunner(GUI gui, int framesPerSecond) {
         this.gui = gui;
         this.framesPerSecond = framesPerSecond;
-        this.sleeper = sleeper;
+        this.sleeper = new Sleeper();
     }
 
     /**

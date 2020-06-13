@@ -11,7 +11,7 @@ import interfaces.Animation;
 public class test {
     public static void main(String[] args) {
         GUI gui = new GUI("rr", 800, 600);
-        AnimationRunner runner = new AnimationRunner(gui, 60, new Sleeper());
+        AnimationRunner runner = new AnimationRunner(gui, 60);
         Animation a1 = new WinScreen(new Counter());
         Animation a2 = new PauseScreen(); // also an Animation
         Animation a1k = new KeyPressStoppableAnimation(gui.getKeyboardSensor(), KeyboardSensor.SPACE_KEY, a1);

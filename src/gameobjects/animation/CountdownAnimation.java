@@ -1,8 +1,11 @@
 package gameobjects.animation;
 
 import biuoop.DrawSurface;
+import biuoop.Sleeper;
 import gameobjects.SpriteCollection;
 import interfaces.Animation;
+
+import java.awt.*;
 
 // The CountdownAnimation will display the given gameScreen,
 // for numOfSeconds seconds, and on top of them it will show
@@ -14,29 +17,65 @@ public class CountdownAnimation implements Animation {
     private int countFrom;
     private SpriteCollection gameScreen;
 
+    private Sleeper sleeper;
+    private boolean isFirstPrint = true;
+    private int millisecondsPerFrame;
+
     public CountdownAnimation(double numOfSeconds, int countFrom, SpriteCollection gameScreen) {
         this.numOfSeconds = numOfSeconds;
         this.countFrom = countFrom;
         this.gameScreen = gameScreen;
+        this.sleeper = new Sleeper();
+        this.millisecondsPerFrame = (int) ((this.getNumOfSeconds() / this.getCountFrom()) * 1000);
+    }
+
+    public double getNumOfSeconds() {
+        return numOfSeconds;
+    }
+
+    public int getCountFrom() {
+        return countFrom;
+    }
+
+    public Sleeper getSleeper() {
+        return sleeper;
+    }
+
+    public SpriteCollection getGameScreen() {
+        return gameScreen;
+    }
+
+    public boolean isFirstPrint() {
+        return isFirstPrint;
+    }
+
+    public int getMillisecondsPerFrame() {
+        return millisecondsPerFrame;
     }
 
     @Override
     public void doOneFrame(DrawSurface d) {
+        long startTime = System.currentTimeMillis(); // timing
         if (d == null) {
             return;
         }
-        for (int i = 0; i < 120; i++) {
-            d.drawText(10, d.getHeight() / 2, String.valueOf(countFrom), 32);
+        this.getGameScreen().drawAllOn(d);
+        d.setColor(Color.WHITE);
+        d.drawText(d.getWidth() / 2, d.getHeight() / 2, String.valueOf(this.getCountFrom()), 50);
+        this.countFrom--;
+        if (!this.isFirstPrint()) {
+            long usedTime = System.currentTimeMillis() - startTime;
+            long milliSecondLeftToSleep = this.getMillisecondsPerFrame() - usedTime;
+            if (milliSecondLeftToSleep > 0) {
+                this.getSleeper().sleepFor(milliSecondLeftToSleep);
+            }
         }
-        countFrom--;
+        this.isFirstPrint = false;
     }
 
 
     @Override
     public boolean shouldStop() {
-        boolean bo = !(countFrom > 0);
-//        return !(numOfSeconds > 0);
-        System.out.println(bo);
-        return bo;
+        return this.getCountFrom() < 0;
     }
 }

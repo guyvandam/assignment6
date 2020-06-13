@@ -9,7 +9,10 @@ public class Constants {
     public static final int guiHeight = 600;
     public static final int widthOrHeight = 20; // corner blocks width or height.
 
-    public static final int paddleSpeed = 10; //default paddle speed.
-    public static final int paddleWidth = 80; //default paddle width.
+    public static final int paddleSpeed = 7; //default paddle speed.
+    public static final int paddleWidth = 100; //default paddle width.
     public static final int paddleHeight = 20;
+
+    public static final int ballSize = 4;
+    public static final int PixelsBetweenBallAndPaddle = 5;
 }

@@ -124,9 +124,6 @@ public class Ball implements Sprite {
         return this.r;
     }
 
-    public void setSize(int r) {
-        this.r = r;
-    }
 
     /**
      * @return an java.awt.Color object. the color of the ball.
@@ -135,8 +132,11 @@ public class Ball implements Sprite {
         return this.color;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    /**
+     * @param color1 a java.awt.Color object. the color we want the ball to be.
+     */
+    public void setColor(Color color1) {
+        this.color = color1;
     }
 
     /**
@@ -148,7 +148,7 @@ public class Ball implements Sprite {
     public void drawOn(DrawSurface surface) {
         if (surface != null) {
             surface.setColor(Color.BLACK);
-            surface.drawCircle(getX(), getY(), this.r +1);
+            surface.drawCircle(getX(), getY(), this.r + 1);
             surface.setColor(this.color);
             surface.fillCircle(getX(), getY(), this.r);
         }

@@ -62,7 +62,7 @@ public class Green3Level extends Level implements LevelInformation {
 
         java.awt.Color[] colors = {Color.gray, Color.red, Color.yellow, Color.BLUE, Color.WHITE};
 
-        int blockWidth = 40, blockHeight = 20;
+        int blockWidth = 50, blockHeight = 25;
         int numOfRows = colors.length, numOfColumns = 10;
         int startX = Constants.guiWidth - numOfColumns * blockWidth - Constants.widthOrHeight - 1, startY = 100;
 

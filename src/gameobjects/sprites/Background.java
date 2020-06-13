@@ -4,11 +4,21 @@ import biuoop.DrawSurface;
 import constants.Constants;
 import interfaces.Sprite;
 
-import java.awt.*;
+import java.awt.Color;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-06-12.
+ */
 public class Background implements Sprite {
-    private java.awt.Color color;
+    private java.awt.Color color; //the color of the background.
 
+    /**
+     * constructor function. gets the color of the background as input.
+     *
+     * @param color a java.awt.Color object. the color of the background.
+     */
     public Background(Color color) {
         this.color = color;
     }
