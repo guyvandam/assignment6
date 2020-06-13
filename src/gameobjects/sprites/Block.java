@@ -11,7 +11,7 @@ import interfaces.HitNotifier;
 import interfaces.Sprite;
 import velocity.Velocity;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 

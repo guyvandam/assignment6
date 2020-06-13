@@ -3,8 +3,8 @@ package gameobjects.gamelevels;
 import constants.Constants;
 
 public abstract class Level {
-    protected int paddleSpeed = Constants.paddleSpeed;
-    protected int paddleWidth = Constants.paddleWidth;
+    protected int paddleSpeed = Constants.PADDLE_SPEED;
+    protected int paddleWidth = Constants.PADDLE_WIDTH;
     protected String levelName;
 
     public Level(String levelName) {

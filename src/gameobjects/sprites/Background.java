@@ -32,7 +32,7 @@ public class Background implements Sprite {
     public void drawOn(DrawSurface d) {
         if (d != null) {
             d.setColor(color);
-            d.fillRectangle(0, 0, Constants.guiWidth, Constants.guiHeight);
+            d.fillRectangle(0, 0, Constants.GUI_WIDTH, Constants.GUI_HEIGHT);
         }
     }
 

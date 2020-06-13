@@ -64,7 +64,7 @@ public class Green3Level extends Level implements LevelInformation {
 
         int blockWidth = 50, blockHeight = 25;
         int numOfRows = colors.length, numOfColumns = 10;
-        int startX = Constants.guiWidth - numOfColumns * blockWidth - Constants.widthOrHeight - 1, startY = 100;
+        int startX = Constants.GUI_WIDTH - numOfColumns * blockWidth - Constants.WIDTH_OR_HEIGHT - 1, startY = 100;
 
         int rowCounter = 0, columnCounter;
         while (rowCounter < numOfRows) {
@@ -79,7 +79,7 @@ public class Green3Level extends Level implements LevelInformation {
             startY += blockHeight;
             numOfColumns--;
             //resetting the starting x position.
-            startX = Constants.guiWidth - numOfColumns * blockWidth - Constants.widthOrHeight - 1;
+            startX = Constants.GUI_WIDTH - numOfColumns * blockWidth - Constants.WIDTH_OR_HEIGHT - 1;
             rowCounter++;
 
         }

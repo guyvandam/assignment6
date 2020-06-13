@@ -10,7 +10,7 @@ import interfaces.Collidable;
 import interfaces.Sprite;
 import velocity.Velocity;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>

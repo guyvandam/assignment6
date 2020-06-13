@@ -4,6 +4,11 @@ import biuoop.DrawSurface;
 import gameobjects.Counter;
 import interfaces.Animation;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-06-12.
+ */
 public abstract class EndScreen implements Animation {
     private String endMessage;
     //    private KeyboardSensor keyboard;

@@ -94,7 +94,7 @@ public class WideEasyLevel extends Level implements LevelInformation {
     @Override
     public List<Block> blocks() {
         java.awt.Color[] colors = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.PINK, Color.CYAN};
-        int x = Constants.widthOrHeight + 1, y = 230, blockWidth, blockHeight = 25, blockInColor;
+        int x = Constants.WIDTH_OR_HEIGHT + 1, y = 230, blockWidth, blockHeight = 25, blockInColor;
         List<Block> blockList = new ArrayList<>();
         for (java.awt.Color c : colors) {
             //resetting the values for the width, and number in color after the green color.

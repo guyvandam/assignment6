@@ -13,15 +13,25 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//need to take care of notes in the function.
+
+
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-06-12.
+ */
 public class DirectHitLevel extends Level implements LevelInformation {
     //the width and height of the red block in the middle of the target.
     private final int widthORHeight = 30;
-    // the center x position of the target drawing and the red block.
+    //the center x position of the target drawing and the red block.
     private final int centerX = this.getGuiWidth() / 2;
     // the center y position of the target drawing and the red block.
     private final int centerY = (this.getGuiHeight() - widthORHeight) / 3 + widthORHeight / 2;
 
-
+    /**
+     * constructor function. create a parent "Level" object to hold all the needed information.
+     */
     public DirectHitLevel() {
         super("Direct Hit");
 //        this.guiWidth = Constants.guiWidth;
@@ -31,22 +41,37 @@ public class DirectHitLevel extends Level implements LevelInformation {
 
     }
 
+    /**
+     * @return an integer. the GUI width.
+     */
     public int getGuiWidth() {
-        return Constants.guiWidth;
+        return Constants.GUI_WIDTH;
     }
 
+    /**
+     * @return an integer. the GUI height.
+     */
     public int getGuiHeight() {
-        return Constants.guiHeight;
+        return Constants.GUI_HEIGHT;
     }
 
+    /**
+     * @return an integer. the corner block width/height.
+     */
     public int getWidthORHeight() {
         return widthORHeight;
     }
 
+    /**
+     * @return an integer.
+     */
     public int getCenterX() {
         return centerX;
     }
 
+    /**
+     * @return an integer.
+     */
     public int getCenterY() {
         return centerY;
     }
@@ -119,8 +144,6 @@ public class DirectHitLevel extends Level implements LevelInformation {
 
     @Override
     public List<Block> blocks() {
-//        int widthORHeight = 30;
-//        Block b = new Block(new Rectangle(new Point((this.getGuiWidth() - widthORHeight) / 2, (this.getGuiHeight() - widthORHeight) / 3), widthORHeight, widthORHeight), Color.RED);
         Block b = new Block(new Rectangle(new Point(this.getCenterX() - (this
                 .getWidthORHeight() / 2), this.getCenterY() - (this.getWidthORHeight() / 2)),
                 this.getWidthORHeight(), this.getWidthORHeight()), Color.RED);

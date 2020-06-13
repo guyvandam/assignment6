@@ -82,14 +82,14 @@ public class GameLevel implements Animation {
      * @return an integer. the GUI width.
      */
     public int getGuiWidth() {
-        return Constants.guiWidth;
+        return Constants.GUI_WIDTH;
     }
 
     /**
      * @return an integer. the GUI height.
      */
     public int getGuiHeight() {
-        return Constants.guiHeight;
+        return Constants.GUI_HEIGHT;
     }
 
 //    /**
@@ -117,7 +117,7 @@ public class GameLevel implements Animation {
      * @return the width/height of the corner block.
      */
     public int getWidthORHeight() {
-        return Constants.widthOrHeight;
+        return Constants.WIDTH_OR_HEIGHT;
     }
 
     /**
@@ -249,6 +249,10 @@ public class GameLevel implements Animation {
 
     }
 
+    /**
+     * initializes the HitListeners for the blocks (the regular and 'death' blocks) and the score hit listener.
+     * called from the constructor to avoid a null-pointer exception.
+     */
     public void initializeHitListeners() {
         BlockRemover blockRemover = new BlockRemover(this, this.getRemainingBlocks());
         ScoreTrackingListener scoreTrackingListener = new ScoreTrackingListener(this.getCurrentScore());
@@ -262,14 +266,23 @@ public class GameLevel implements Animation {
 
     }
 
+    /**
+     * adds the background color by creating a new Background object with the desired color, and adding it to the
+     * SpriteCollection of the GameLevel.
+     */
     public void addBackgroundColor() {
         this.addSprite(this.getLevelInformation().getBackground());
     }
 
+    /**
+     * adds the balls to the game with a center horizontally, 5 pixels above the paddle starting position, with the
+     * velocities from the LevelInformation object.
+     */
     public void addBalls() {
-        int size = Constants.ballSize,
+        int size = Constants.BALL_SIZE,
                 startX = this.getGuiWidth() / 2, startY =
-                this.getGuiHeight() - this.getWidthORHeight() - size - Constants.paddleHeight - Constants.PixelsBetweenBallAndPaddle;
+                this.getGuiHeight() - this.getWidthORHeight() - size - Constants.PADDLE_HEIGHT -
+                        Constants.PIXELS_BETWEEN_BALL_AND_PADDLE;
         int numOfBalls = this.getLevelInformation().numberOfBalls();
 
         Ball[] balls = new Ball[numOfBalls];
@@ -283,6 +296,9 @@ public class GameLevel implements Animation {
 
     }
 
+    /**
+     * adds the blocks from the LevelInformation object to the game, and set the HitListeners for each one of them.
+     */
     public void addBlocks() {
         List<Block> blocks = this.getLevelInformation().blocks();
         for (Block b : blocks) {
@@ -346,7 +362,7 @@ public class GameLevel implements Animation {
      */
     public void addPaddle() {
         int paddleWidth = this.getLevelInformation().paddleWidth(),
-                paddleHeight = Constants.paddleHeight, paddleX = (this.getGuiWidth() - paddleWidth) / 2,
+                paddleHeight = Constants.PADDLE_HEIGHT, paddleX = (this.getGuiWidth() - paddleWidth) / 2,
                 paddleY = this.getGuiHeight() - this.getWidthORHeight() - paddleHeight;
         java.awt.Color paddleColor = Color.ORANGE;
 

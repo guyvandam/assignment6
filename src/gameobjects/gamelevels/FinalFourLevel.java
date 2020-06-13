@@ -9,15 +9,21 @@ import interfaces.LevelInformation;
 import interfaces.Sprite;
 import velocity.Velocity;
 
+// need to take care of notes in the functions.
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+
+
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
  * @version 1.0
  * @since 2020-06-12.
  */
 public class FinalFourLevel extends Level implements LevelInformation {
+    /**
+     * constructor function. create a parent "Level" object to hold all the needed information.
+     */
     public FinalFourLevel() {
         super("Final Four");
     }
@@ -62,10 +68,11 @@ public class FinalFourLevel extends Level implements LevelInformation {
     @Override
     public List<Block> blocks() {
         List<Block> blockList = new ArrayList<>();
-        java.awt.Color[] colors = {Color.gray, Color.red, Color.yellow, Color.GREEN, Color.WHITE, Color.pink, Color.cyan};
+        java.awt.Color[] colors =
+                {Color.gray, Color.red, Color.yellow, Color.GREEN, Color.WHITE, Color.pink, Color.cyan};
 
-        int startX = Constants.widthOrHeight + 1, startY = 100, numOfBlocks = 15, blockHeight = 25,
-                blockWidth = (Constants.guiWidth - startX) / numOfBlocks - 1,
+        int startX = Constants.WIDTH_OR_HEIGHT + 1, startY = 100, numOfBlocks = 15, blockHeight = 25,
+                blockWidth = (Constants.GUI_WIDTH - startX) / numOfBlocks - 1,
                 tempX = startX;
 
         for (Color color : colors) {
@@ -78,7 +85,7 @@ public class FinalFourLevel extends Level implements LevelInformation {
                         blockWidth, blockHeight), color));
 
                 tempX += blockWidth;
-                blockWidth = (Constants.guiWidth - startX) / numOfBlocks - 1;
+                blockWidth = (Constants.GUI_WIDTH - startX) / numOfBlocks - 1;
             }
             startY += blockHeight;
             tempX = startX;
