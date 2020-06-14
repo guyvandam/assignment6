@@ -23,7 +23,7 @@ public class Ass6Game {
      * creates a BIU-OOP GUI object, an array list of levels and a GameFlow object that runs those levels.
      * </p>
      *
-     * @param args 
+     * @param args
      */
     public static void main(String[] args) {
         GUI gui = new GUI("Arkanoid", Constants.GUI_WIDTH, Constants.GUI_HEIGHT);

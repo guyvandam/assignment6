@@ -12,7 +12,17 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+// need to take care of notes.
+
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-06-12.
+ */
 public class Green3Level extends Level implements LevelInformation {
+    /**
+     * constructor function. create a parent "Level" object to hold all the needed information.
+     */
     public Green3Level() {
         super("Green 3");
     }

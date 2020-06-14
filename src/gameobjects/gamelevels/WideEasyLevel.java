@@ -13,7 +13,18 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//note clean up.
+
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-06-12.
+ */
 public class WideEasyLevel extends Level implements LevelInformation {
+    /**
+     * constructor function. create a parent "Level" object to hold all the needed information. changes the block's
+     * default width and the speed to width = 550 and speed = 1 (the slowest speed).
+     */
     public WideEasyLevel() {
         super("Wide Easy");
         super.setPaddleSpeed(1);
@@ -93,7 +104,8 @@ public class WideEasyLevel extends Level implements LevelInformation {
 
     @Override
     public List<Block> blocks() {
-        java.awt.Color[] colors = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.PINK, Color.CYAN};
+        java.awt.Color[] colors = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.PINK,
+                Color.CYAN};
         int x = Constants.WIDTH_OR_HEIGHT + 1, y = 230, blockWidth, blockHeight = 25, blockInColor;
         List<Block> blockList = new ArrayList<>();
         for (java.awt.Color c : colors) {

@@ -178,6 +178,12 @@ public class Rectangle {
         return p != null && isInHorizontalBounds(p) && isInVerticalBounds(p);
     }
 
+    /**
+     * draws the rectangle in the input color, on the input DrawSurface.
+     *
+     * @param d a BIU-OOP DrawSurface object.
+     * @param color a java.awt.Color object.
+     */
     public void drawOn(DrawSurface d, Color color) {
         if (d != null) {
             d.setColor(Color.BLACK);

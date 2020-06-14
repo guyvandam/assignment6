@@ -21,6 +21,7 @@ import geometryshapes.Point;
 import geometryshapes.Rectangle;
 import interfaces.*;
 
+// meed to take care of notes.
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -281,8 +282,8 @@ public class GameLevel implements Animation {
     public void addBalls() {
         int size = Constants.BALL_SIZE,
                 startX = this.getGuiWidth() / 2, startY =
-                this.getGuiHeight() - this.getWidthORHeight() - size - Constants.PADDLE_HEIGHT -
-                        Constants.PIXELS_BETWEEN_BALL_AND_PADDLE;
+                this.getGuiHeight() - this.getWidthORHeight() - size - Constants.PADDLE_HEIGHT
+                        - Constants.PIXELS_BETWEEN_BALL_AND_PADDLE;
         int numOfBalls = this.getLevelInformation().numberOfBalls();
 
         Ball[] balls = new Ball[numOfBalls];

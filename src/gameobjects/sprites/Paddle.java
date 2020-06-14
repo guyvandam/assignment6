@@ -14,6 +14,8 @@ import velocity.Velocity;
 
 import java.awt.*;
 
+// note clean up.
+
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
  * @version 1.0
@@ -35,8 +37,10 @@ public class Paddle implements Sprite, Collidable {
      * @param rect            a GeometryShapes.Rectangle object.
      * @param color           a java.awt.color object.
      * @param gameEnvironment a GameObjects.GameEnvironment object.
+     * @param paddleSpeed     an integer. the paddle speed.
      */
-    public Paddle(KeyboardSensor keyboard, Rectangle rect, Color color, GameEnvironment gameEnvironment, int paddleSpeed) {
+    public Paddle(KeyboardSensor keyboard, Rectangle rect, Color color, GameEnvironment gameEnvironment,
+                  int paddleSpeed) {
         this.keyboard = keyboard;
         this.rect = rect;
         this.color = color;

@@ -5,7 +5,7 @@ import gameobjects.Counter;
 import gameobjects.gamelevels.GameLevel;
 import interfaces.Sprite;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -22,6 +22,7 @@ public class ScoreIndicator implements Sprite {
      *
      * @param currentScore a Counter object.
      * @param block        a Block object.
+     * @param levelName    a String.
      */
     public ScoreIndicator(Counter currentScore, Block block, String levelName) {
         this.currentScore = currentScore;
@@ -44,6 +45,9 @@ public class ScoreIndicator implements Sprite {
         return block;
     }
 
+    /**
+     * @return a String. the level name.
+     */
     public String getLevelName() {
         return levelName;
     }
@@ -61,7 +65,7 @@ public class ScoreIndicator implements Sprite {
             this.getBlock().drawOn(d);
             d.setColor(Color.BLACK);
             d.drawText(x, y, display, fontSize);
-            d.drawText(2*x, y, "Level Name: " + this.getLevelName(), fontSize);
+            d.drawText(2 * x, y, "Level Name: " + this.getLevelName(), fontSize);
         }
     }
 
