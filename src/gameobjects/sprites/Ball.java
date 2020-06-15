@@ -10,7 +10,7 @@ import interfaces.Collidable;
 import interfaces.Sprite;
 import velocity.Velocity;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -250,7 +250,6 @@ public class Ball implements Sprite {
                 // in case the ball is trapped inside a block or a paddle.
                 if (closestCollision.collisionObject().getCollisionRectangle().isInRectangle(this.getCenter())) {
                     this.setCenter(closestCollision.collisionPoint());
-                    System.out.println("in");
                 } else {
                     Point hitPoint = closestCollision.collisionPoint();
                     // as we said. the radios would be so small so moving it to the hit point minus the half of the

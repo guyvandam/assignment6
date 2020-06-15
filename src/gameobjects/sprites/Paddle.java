@@ -135,7 +135,6 @@ public class Paddle implements Sprite, Collidable {
         }
     }
 
-    // Interfaces.Sprite
     @Override
     public void timePassed() {
         if (this.getKeyboard().isPressed(KeyboardSensor.LEFT_KEY)) {

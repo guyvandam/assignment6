@@ -9,6 +9,7 @@ public class KeyPressStoppableAnimation implements Animation {
     private String key;
     private Animation animation;
     private boolean isAlreadyPressed = true;
+    private boolean stop = false;
 
 
     public KeyPressStoppableAnimation(KeyboardSensor sensor, String key, Animation animation) {
