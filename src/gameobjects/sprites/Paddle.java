@@ -12,9 +12,8 @@ import interfaces.Collidable;
 import interfaces.Sprite;
 import velocity.Velocity;
 
-import java.awt.*;
+import java.awt.Color;
 
-// note clean up.
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -22,13 +21,13 @@ import java.awt.*;
  * @since 2020-03-28.
  */
 public class Paddle implements Sprite, Collidable {
+    private final int numOfRegions = 5;
+    // the part of the width we want to move the paddle each time we press the right or left keys.
+    private int partOfWidth;
     private biuoop.KeyboardSensor keyboard;
     private Rectangle rect;
     private java.awt.Color color;
     private GameEnvironment gameEnvironment;
-    private int numOfRegions;
-    // the part of the width we want to move the paddle each time we press the right or left keys.
-    private int partOfWidth;
 
     /**
      * constructor function.
@@ -45,8 +44,6 @@ public class Paddle implements Sprite, Collidable {
         this.rect = rect;
         this.color = color;
         this.gameEnvironment = gameEnvironment;
-        this.numOfRegions = 5;
-
         // the paddle moves sixth of it's width for every key stroke. by dividing the 'partOfWidth' variable by the
         // input paddleSpeed we get more movement if the paddle speed is higher, and less movement for the lower
         // paddleSpeed.
@@ -147,13 +144,6 @@ public class Paddle implements Sprite, Collidable {
     @Override
     public void drawOn(DrawSurface d) {
         if (d != null) {
-//            d.setColor(Color.BLACK);
-//            d.drawRectangle((int) this.getRect().getUpperLeft().getX() - 1,
-//                    (int) this.getRect().getUpperLeft().getY() - 1, (int) this.getRect().getWidth() + 1,
-//                    (int) this.getRect().getHeight() + 1);
-//            d.setColor(this.color);
-//            d.fillRectangle((int) this.getRect().getUpperLeft().getX(), (int) this.getRect().getUpperLeft().getY(),
-//                    (int) this.getRect().getWidth(), (int) this.getRect().getHeight());
             this.getRect().drawOn(d, this.color);
         }
     }

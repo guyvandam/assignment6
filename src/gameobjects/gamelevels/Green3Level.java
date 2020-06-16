@@ -8,7 +8,7 @@ import interfaces.LevelInformation;
 import interfaces.Sprite;
 import velocity.Velocity;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,19 +45,16 @@ public class Green3Level extends Level implements LevelInformation {
 
     @Override
     public int paddleSpeed() {
-//        return 10;
         return super.getPaddleSpeed();
     }
 
     @Override
     public int paddleWidth() {
-//        return 80;
         return super.getPaddleWidth();
     }
 
     @Override
     public String levelName() {
-//        return "Green 3";
         return super.getLevelName();
     }
 

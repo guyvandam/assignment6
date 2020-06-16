@@ -9,12 +9,9 @@ import interfaces.LevelInformation;
 import interfaces.Sprite;
 import velocity.Velocity;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-
-//need to take care of notes in the function.
-
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -34,11 +31,6 @@ public class DirectHitLevel extends Level implements LevelInformation {
      */
     public DirectHitLevel() {
         super("Direct Hit");
-//        this.guiWidth = Constants.guiWidth;
-//        this.guiHeight = Constants.guiHeight;
-//        this.centerX = this.getGuiWidth() / 2;
-//        this.centerY = (this.getGuiHeight() - widthORHeight) / 3 + widthORHeight / 2;
-
     }
 
     /**
@@ -93,20 +85,16 @@ public class DirectHitLevel extends Level implements LevelInformation {
 
     @Override
     public int paddleSpeed() {
-
-//        return 10;
         return super.getPaddleSpeed();
     }
 
     @Override
     public int paddleWidth() {
-//        return 80;
         return super.getPaddleWidth();
     }
 
     @Override
     public String levelName() {
-//        return "Direct Hit";
         return super.getLevelName();
     }
 

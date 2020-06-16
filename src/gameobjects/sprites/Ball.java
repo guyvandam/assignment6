@@ -10,7 +10,7 @@ import interfaces.Collidable;
 import interfaces.Sprite;
 import velocity.Velocity;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * @author Guy Vandam 325133148 <guyvandam@gmail.com>
@@ -54,21 +54,6 @@ public class Ball implements Sprite {
         this.v = v;
         this.gameEnvironment = gameEnvironment;
     }
-
-    /**
-     * constructor function as well, gets x and y of the center point instead of the point itself.
-     *
-     * @param x     a double. the x field of the center point.
-     * @param y     a double. the y field of the center point.
-     * @param r     an int. the radios of the ball.
-     * @param color an java.awt.Color object. the color of the ball
-     */
-    public Ball(double x, double y, int r, java.awt.Color color) {
-        this.center = new Point(x, y);
-        this.r = r;
-        this.color = color;
-    }
-
 
     /**
      * @return a GeometryShapes.Point object, the center point of the ball.
@@ -115,15 +100,6 @@ public class Ball implements Sprite {
     public int getY() {
         return (int) (this.center.getY());
     }
-
-
-    /**
-     * @return an int. the radios of the ball.
-     */
-    public int getSize() {
-        return this.r;
-    }
-
 
     /**
      * @return an java.awt.Color object. the color of the ball.

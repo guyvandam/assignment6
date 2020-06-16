@@ -2,7 +2,7 @@ package geometryshapes;
 
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +40,6 @@ public class Rectangle {
      * @param line a GeometryShapes.Line object.
      * @return a java-ArrayList object. null if there's no intersection points.
      */
-    //
-    // with the specified line.
     public java.util.List<Point> intersectionPoints(Line line) {
         if (line == null) {
             return null;

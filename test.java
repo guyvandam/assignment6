@@ -1,6 +1,5 @@
 import biuoop.GUI;
 import biuoop.KeyboardSensor;
-import biuoop.Sleeper;
 import gameobjects.Counter;
 import gameobjects.animation.AnimationRunner;
 import gameobjects.animation.KeyPressStoppableAnimation;

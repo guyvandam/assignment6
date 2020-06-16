@@ -9,8 +9,7 @@ import interfaces.LevelInformation;
 import interfaces.Sprite;
 import velocity.Velocity;
 
-// need to take care of notes in the functions.
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,13 +49,11 @@ public class FinalFourLevel extends Level implements LevelInformation {
 
     @Override
     public int paddleWidth() {
-//        return 80;
         return super.getPaddleWidth();
     }
 
     @Override
     public String levelName() {
-//        return "Final Four";
         return super.getLevelName();
     }
 

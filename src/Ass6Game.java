@@ -18,18 +18,27 @@ import java.util.TreeMap;
  * @since 2020-06-12.
  */
 public class Ass6Game {
-    private static final TreeMap<Integer, LevelInformation> levelNumberLevelInformationObjectMap = new TreeMap<>() {
-        {
-            put(1, new DirectHitLevel());
-            put(2, new WideEasyLevel());
-            put(3, new Green3Level());
-            put(4, new FinalFourLevel());
-        }
-    };
+    private static final TreeMap<Integer, LevelInformation> LEVEL_NUMBER_LEVEL_INFORMATION_OBJECT_MAP = new
+            TreeMap<>() {
+                {
+                    put(1, new DirectHitLevel());
+                    put(2, new WideEasyLevel());
+                    put(3, new Green3Level());
+                    put(4, new FinalFourLevel());
+                }
+            };
 
+    /**
+     * returns a list of LevelInformation according to the numbers in the input of the command line for the main
+     * method, the "args" String array. takes care of strings that doesn's represent integers and empty inputs.
+     *
+     * @param stringArray a String array. the input from the command line of the main method.
+     * @return a Java ArrayList of LevelInformation objects.
+     */
     public static List<LevelInformation> parseStringToIntArray(String[] stringArray) {
-        if (stringArray == null || stringArray.length == 0) {
-            return new ArrayList<>(levelNumberLevelInformationObjectMap.values());
+        if (stringArray == null || stringArray.length == 0
+                || (stringArray[0].equals("${args}") && stringArray.length == 1)) {
+            return new ArrayList<>(LEVEL_NUMBER_LEVEL_INFORMATION_OBJECT_MAP.values());
         }
         List<LevelInformation> levelInformationList = new ArrayList<>();
         LevelInformation temp;
@@ -39,7 +48,7 @@ public class Ass6Game {
             try {
                 levelNumber = Integer.parseInt(s);
                 try {
-                    temp = levelNumberLevelInformationObjectMap.get(levelNumber);
+                    temp = LEVEL_NUMBER_LEVEL_INFORMATION_OBJECT_MAP.get(levelNumber);
                 } catch (NullPointerException nullPointerException) {
                 }
             } catch (Exception e) {
@@ -50,6 +59,9 @@ public class Ass6Game {
             }
 
         }
+        if (levelInformationList.isEmpty()) {
+            return new ArrayList<>(LEVEL_NUMBER_LEVEL_INFORMATION_OBJECT_MAP.values());
+        }
         return levelInformationList;
     }
 
@@ -57,16 +69,16 @@ public class Ass6Game {
     /**
      * main method. runs the game.
      * <p>
-     * creates a BIU-OOP GUI object, an array list of levels and a GameFlow object that runs those levels.
+     * converts the input array into a list of levels. creates a BIU-OOP GUI object and a GameFlow object that runs
+     * the levels.
      * </p>
      *
-     * @param args
+     * @param args the input from the command line. can be a list of numbers representing levels.
      */
     public static void main(String[] args) {
 
 
         List<LevelInformation> levelInformationList = parseStringToIntArray(args);
-
 
         GUI gui = new GUI("Arkanoid", Constants.GUI_WIDTH, Constants.GUI_HEIGHT);
 
